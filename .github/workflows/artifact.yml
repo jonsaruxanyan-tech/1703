@@ -1,0 +1,29 @@
+name: Build and Run C++ Code with Artifact
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cpp-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install g++
+        run: sudo apt-get update && sudo apt-get install -y g++
+
+      - name: Compile C++ file
+        run: g++ -std=c++17 hello.cpp -o main
+
+      - name: Run executable
+        run: ./main
+
+      - name: Upload compiled executable as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: compiled-executable
+          path: main
