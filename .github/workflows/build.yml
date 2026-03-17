@@ -20,3 +20,31 @@ jobs:
 
       - name: Run executable
         run: ./main
+        
+  cpp-build-new:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install g++
+        run: sudo apt-get update && sudo apt-get install -y g++
+
+      - name: Compile and Run new.cpp
+        run: |
+          g++ -std=c++17 new.cpp -o main
+          ./main
+
+  cpp-build-swap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install g++
+        run: sudo apt-get update && sudo apt-get install -y g++
+
+      - name: Compile and Run swap.cpp
+        run: |
+          g++ -std=c++17 swap.cpp -o main
+          ./main
