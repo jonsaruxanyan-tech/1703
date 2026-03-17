@@ -1,18 +1,9 @@
 name: Build
 
 on:
-  workflow_dispatch:
-    inputs:
-      file_name:
-        description: "Input file name"
-        required: true
-        default: "hello.cpp"
-        // type: choice
-        // options:
-        //   - a.cpp
-        //   - b.cpp
-        //   - c.cpp
-
+  push:
+    branches:
+      - main
 jobs:
   cpp-build:
     runs-on: ubuntu-latest
@@ -25,7 +16,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y g++
 
       - name: Compile C++ file
-        run: g++ -std=c++17 ${{ inputs.file_name }} -o output
+        run: g++ -std=c++17 hello.cpp -o output
 
       - name: Run executable
         run: ./output
