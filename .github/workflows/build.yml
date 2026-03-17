@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches:
+    branches: 
       - main
 jobs:
   cpp-build:
@@ -16,7 +16,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y g++
 
       - name: Compile C++ file
-        run: g++ -std=c++17 hello.cpp -o output
+        run: g++ -std=c++17 hello.cpp -o main
 
       - name: Run executable
-        run: ./output
+        run: ./main
